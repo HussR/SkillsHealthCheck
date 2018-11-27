@@ -1,0 +1,27 @@
+<h1>Results</h1>
+
+<p *ngIf="!outcome"><em>Loading...</em></p>
+
+<div *ngIf="outcome">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4" align="center">
+        <div class="coin gold"></div>
+        <br/><br />
+        <p><strong>{{outcome[0].trait}}</strong></p>
+        <p><strong>Score:</strong> {{outcome[0].score}}</p>
+      </div>
+      <div class="col-lg-4" align="center">
+        <div class="coin silver"></div>
+        <br /><br />
+        <p><strong>{{outcome[1].trait}}</strong></p>
+        <p><strong>Score:</strong> {{outcome[1].score}}</p>
+      </div>
+      <div class="col-lg-4" align="center">
+        <div class="coin bronze"></div>
+        <br /><br />
+        <p><strong>{{outcome[2].trait}}</strong></p>
+        <p><strong>Score:</strong> {{outcome[2].score}}</p>
+      </div>
+    </div>
+</div>

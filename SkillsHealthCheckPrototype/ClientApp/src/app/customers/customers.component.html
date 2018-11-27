@@ -1,0 +1,20 @@
+<h1>Customers</h1>
+
+<p *ngIf="!customers"><em>Loading...</em></p>
+
+<table class='table' *ngIf="customers">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Start</th>
+      <th>End</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td><a href="/results?customerId={{ customer.id }}">{{ customer.id }}</a></td>
+      <td>{{ customer.startdatetime }}</td>
+      <td>{{ customer.enddatetime }}</td>
+    </tr>
+  </tbody>
+</table>

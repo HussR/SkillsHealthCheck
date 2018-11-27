@@ -1,0 +1,26 @@
+<h1>Questions</h1>
+
+<p *ngIf="!questions"><em>Loading...</em></p>
+
+<table class='table' *ngIf="questions">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Question</th>
+      <th>TraitId</th>
+      <th>Trait</th>
+      <th>Order</th>
+      <th>IsVisible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let question of questions">
+      <td>{{ question.id }}</td>
+      <td>{{ question.text }}</td>
+      <td>{{ question.questiontraits && question.questiontraits[0].traitid }}</td>
+      <td>{{ question.questiontraits && question.questiontraits[0].trait }}</td>
+      <td>{{ question.order }}</td>
+      <td>{{ question.isvisible }}</td>
+    </tr>
+  </tbody>
+</table>
