@@ -1,0 +1,11 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+    <div class="progress-body">
+      <div class="progress">
+        <div class="progress-bar progress-success" [attr.data-percent]="percent" [style.width]="percent + '%'">
+          <span class="progress-label" [style.left]="percent - 3 + '%'">{{percent}}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

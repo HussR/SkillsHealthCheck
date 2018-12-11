@@ -22,5 +22,8 @@ namespace SkillsHealthCheckPrototype.Models
 
         [JsonProperty(PropertyName = "enddatetime")]
         public DateTime EndDateTime { get; set; }
+
+        [JsonProperty(PropertyName = "isflippedsurvey")]
+        public bool? IsFlippedSurvey { get; set; }
     }
 }

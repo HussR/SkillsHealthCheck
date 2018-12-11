@@ -1,0 +1,30 @@
+<div class="govuk-grid-row" class="question-response" [class.selected]="responseSelected">
+  <div class="govuk-grid-column-one-half question">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        {{question?.text}}
+      </h1>
+    </legend>
+  </div>
+  <div class="govuk-grid-column-one-half response">
+    <div class="govuk-radios govuk-radios--inline" *ngIf="!responseSelected">
+      <div class="govuk-radios__item" *ngFor="let rating of ratings">
+        <input class="govuk-radios__input" [id]="rating.value" name="response" type="radio" [value]="rating.value"
+          (click)="onSelectedResponse(rating)">
+        <label class="govuk-label govuk-radios__label" [for]="rating.value">
+          {{rating.text}}
+        </label>
+      </div>
+    </div>
+    <div class="undo-panel" *ngIf="responseSelected">
+      <div class="selected-confirm">
+        <fa-icon [icon]="faCheckCircle" size="3x"></fa-icon>
+        <span class="govuk-heading-xl">Selected</span>
+      </div>
+      <div class="undo-btn" (click)="onUndo()" draggable="false">
+        <img src="../../../../assets/images/undo.svg" />
+        <span class="govuk-label govuk-!-font-weight-bold govuk-!-font-size-27">undo</span>
+      </div>
+    </div>
+  </div>
+</div>

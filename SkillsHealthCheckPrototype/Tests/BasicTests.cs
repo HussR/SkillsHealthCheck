@@ -35,32 +35,16 @@ namespace SkillsHealthCheckPrototype.Tests
         public void GoThroughAssessment()
         {
 
-            ngDriver.Url = URL + "assessment";
+            ngDriver.Url = URL + "assessment-neg";
 
             Random random = new Random();
             for (int i = 0; i < 40; i++)
             {
-                int choice = random.Next(0, 4);
-
-                if (choice == 4)
+                int choice = random.Next(-2, 2);
+                ngDriver.FindElement(By.Id(choice.ToString())).Click();
+                if(choice != 0)
                 {
-                    ngDriver.FindElement(By.Id("super-happy")).Click();
-                }
-                else if (choice == 3)
-                {
-                    ngDriver.FindElement(By.Id("happy")).Click();
-                }
-                else if (choice == 2)
-                {
-                    ngDriver.FindElement(By.Id("neutral")).Click();
-                }
-                else if (choice == 1)
-                {
-                    ngDriver.FindElement(By.Id("sad")).Click();
-                }
-                else if (choice == 0)
-                {
-                    ngDriver.FindElement(By.Id("super-sad")).Click();
+                    ngDriver.FindElement(By.Id("next")).Click();
                 }
             }
             Console.WriteLine("URL: " + ngDriver.Url);

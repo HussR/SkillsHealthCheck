@@ -1,27 +1,78 @@
-<h1>Results</h1>
-
-<p *ngIf="!outcome"><em>Loading...</em></p>
-
-<div *ngIf="outcome">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4" align="center">
-        <div class="coin gold"></div>
-        <br/><br />
-        <p><strong>{{outcome[0].trait}}</strong></p>
-        <p><strong>Score:</strong> {{outcome[0].score}}</p>
-      </div>
-      <div class="col-lg-4" align="center">
-        <div class="coin silver"></div>
-        <br /><br />
-        <p><strong>{{outcome[1].trait}}</strong></p>
-        <p><strong>Score:</strong> {{outcome[1].score}}</p>
-      </div>
-      <div class="col-lg-4" align="center">
-        <div class="coin bronze"></div>
-        <br /><br />
-        <p><strong>{{outcome[2].trait}}</strong></p>
-        <p><strong>Score:</strong> {{outcome[2].score}}</p>
-      </div>
-    </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+    <h1 class="govuk-heading-xl">Job categories you might be suited to </h1>
+  </div>
 </div>
+
+<div class="govuk-grid-row result" *ngIf="outcome">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- administration -->
+    <section class="widget">
+      <h1 class="govuk-heading-l">{{outcome[0].trait}}</h1>
+
+      <div class="govuk-body  govuk-!-margin-top-1 govuk-!-margin-bottom-2">
+        <img src="../../../assets/images/admininistration.svg" />
+        <!--Your score for this trait is {{outcome[0].score}}-->
+      </div>
+      <div class="govuk-body  govuk-!-margin-top-3 govuk-!-margin-bottom-1">
+        <label class="govuk-heading-m govuk-!-margin-bottom-1">How we got those results</label>
+        <label>You got this job type because your answers suggest you like to be organised and pay attention to detail.</label>
+      </div>
+      <a role="button" draggable="false" class="btn govuk-button govuk-button--start govuk-!-margin-top-3 govuk-!-margin-bottom-4">
+        View job information
+      </a>
+    </section>
+    <hr />
+
+    <!-- maintenance and repair -->
+    <section class="widget">
+      <h1 class="govuk-heading-l">{{outcome[1].trait}}</h1>
+
+      <div class="govuk-body  govuk-!-margin-top-1 govuk-!-margin-bottom-2">
+        <img src="../../../assets/images/maintenance.svg" />
+        <!--Your score for this trait is {{outcome[1].score}}-->
+      </div>
+      <div class="govuk-body  govuk-!-margin-top-3 govuk-!-margin-bottom-1">
+        <label class="govuk-heading-m govuk-!-margin-bottom-1">How we got those results</label>
+        <label>
+          You got this job type because your answers suggest you like working with your hands and solving
+          problems.
+        </label>
+      </div>
+      <a role="button" draggable="false" class="btn govuk-button govuk-button--start govuk-!-margin-top-3 govuk-!-margin-bottom-4">
+        View job information
+      </a>
+    </section>
+    <hr />
+
+    <!-- social services -->
+    <section class="widget">
+      <h1 class="govuk-heading-l">{{outcome[2].trait}}</h1>
+
+      <div class="govuk-body  govuk-!-margin-top-1 govuk-!-margin-bottom-2">
+        <img src="../../../assets/images/social-service.svg" />
+        <!--Your score for this trait is {{outcome[2].score}}-->
+      </div>
+      <div class="govuk-body  govuk-!-margin-top-3 govuk-!-margin-bottom-1">
+        <label class="govuk-heading-m govuk-!-margin-bottom-1">How we got those results</label>
+        <label>You got this job type because your answers suggest you like planning and working with others.</label>
+      </div>
+      <a role="button" draggable="false" class="btn govuk-button govuk-button--start govuk-!-margin-top-3 govuk-!-margin-bottom-4">
+        View job information
+      </a>
+    </section>
+    <hr />
+  </div>
+
+  <div class="govuk-grid-column-one-third sidebar">
+    <div class="more-detail">
+      <h3 class="govuk-heading-s">Want more detailed results?</h3>
+      <a role="button" class="btn govuk-button govuk-button--start">
+        View more questions
+      </a>
+    </div>
+    <app-sidebar></app-sidebar>
+  </div>
+</div>
+

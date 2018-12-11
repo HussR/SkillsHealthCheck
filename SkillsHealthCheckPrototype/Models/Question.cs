@@ -20,5 +20,8 @@ namespace SkillsHealthCheckPrototype.Models
 
         [JsonProperty(PropertyName = "order")]
         public int Order { get; set; }
+
+        [JsonProperty(PropertyName = "isflipquestion")]
+        public bool? IsFlipQuestion { get; set; }
     }
 }

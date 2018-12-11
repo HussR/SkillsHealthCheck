@@ -12,8 +12,8 @@ namespace SkillsHealthCheckPrototype.Repository
     public static class DocumentDBRepository<T> where T : class
     {
 
-        private static readonly string Endpoint = "YOUR-ENDPOINT";
-        private static readonly string Key = "YOUR-KEY";
+        private static readonly string Endpoint = "https://localhost:8081";
+        private static readonly string Key = "YOUR-DETAILS";
         private static readonly string DatabaseId = "SkillsHealthCheck";
         private static readonly string CollectionId = "Questions";
         private static readonly string CustomerCollectionId = "Customers";
@@ -64,6 +64,23 @@ namespace SkillsHealthCheckPrototype.Repository
             IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
                 UriFactory.CreateDocumentCollectionUri(DatabaseId, CustomerCollectionId),
                 new FeedOptions { MaxItemCount = -1 })
+                .AsDocumentQuery();
+
+            List<T> results = new List<T>();
+            while (query.HasMoreResults)
+            {
+                results.AddRange(await query.ExecuteNextAsync<T>());
+            }
+
+            return results;
+        }
+
+        public static async Task<IEnumerable<T>> GetCustomersAsync(Expression<Func<T, bool>> predicate)
+        {
+            IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
+                UriFactory.CreateDocumentCollectionUri(DatabaseId, CustomerCollectionId),
+                new FeedOptions { MaxItemCount = -1 })
+                .Where(predicate)
                 .AsDocumentQuery();
 
             List<T> results = new List<T>();

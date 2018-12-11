@@ -1,0 +1,11 @@
+@import 'base/colors';
+.container {
+    &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        left: 0;
+        width: 100%;
+        border-bottom: solid 10px $primary-color;
+    }
+}

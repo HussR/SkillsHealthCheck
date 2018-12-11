@@ -53,7 +53,16 @@ namespace SkillsHealthCheckPrototype.Controllers
         [HttpGet("[action]")]
         public async Task<IEnumerable<Customer>> GetCustomers()
         {
-            var items = await DocumentDBRepository<Customer>.GetCustomersAsync();
+            var items = await DocumentDBRepository<Customer>.GetCustomersAsync(d => d.IsFlippedSurvey.HasValue == false || d.IsFlippedSurvey == false);
+            return items;
+        }
+
+        [AllowAnonymous]
+        [HttpGet("[action]")]
+        //Gets visible questions only
+        public async Task<IEnumerable<Customer>> GetCustomersFlipped()
+        {
+            var items = await DocumentDBRepository<Customer>.GetCustomersAsync(d => d.IsFlippedSurvey == true);
             return items;
         }
 

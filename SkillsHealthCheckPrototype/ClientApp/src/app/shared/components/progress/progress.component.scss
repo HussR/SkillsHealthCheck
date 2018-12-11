@@ -1,0 +1,53 @@
+@import "node_modules/govuk-frontend/helpers/all";
+
+.progress-body {
+    width: 100%;
+    margin-bottom: 20px;
+
+    .progress {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      font-family: "Roboto", sans-serif;
+    }
+    .progress-bar {
+      display: block;
+      float: left;
+      width: 0%;
+      height: 100%;
+      background: #3798d9;
+      box-shadow: inset 0px -1px 2px rgba(0, 0, 0, 0.1);
+      -webkit-transition: width 0.8s ease-in-out;
+      transition: width 0.8s ease-in-out;
+    }
+    .progress-label {
+      position: absolute;
+      overflow: hidden;
+      left: 0%;
+      color: #fff;
+      font-size: 0.7em;
+      text-align: center;
+      text-shadow: 0px 1px rgba(0, 0, 0, 0.3);
+      -webkit-transition: left 0.8s ease-in-out;
+      transition: left 0.8s ease-in-out;
+    }
+    .progress-success {
+      background-color: govuk-colour('green');
+    }
+  }
+  
+  .progress {
+    background-color: #EEE;
+    border-radius: 15px;
+    background: white;
+    border: solid 4px govuk-colour('green');
+
+    .progress-bar {
+      height: 18px;
+      border-radius: 9px;
+
+    }
+    .progress-label {
+      line-height: 18px;
+    }
+  }

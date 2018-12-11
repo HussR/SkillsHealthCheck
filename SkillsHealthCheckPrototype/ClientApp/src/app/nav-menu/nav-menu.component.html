@@ -33,6 +33,11 @@
               </a>
             </li>
             <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/assessment-neg"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-th-list'></span> Assessment Flipped
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
               <a [routerLink]='["/customers"]' (click)='collapse()'>
                 <span class='glyphicon glyphicon-th-list'></span> Results
               </a>

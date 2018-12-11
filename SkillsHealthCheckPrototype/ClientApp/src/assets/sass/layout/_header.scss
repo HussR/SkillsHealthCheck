@@ -1,0 +1,47 @@
+@import '../base/colors';
+
+#header {
+    background: url('/assets/images/background.svg');
+    background-size: cover;
+
+    .ncs-header__container {
+        border-bottom: 10px solid white;
+    }
+
+    #sub-header {
+        cursor: default;
+
+        #ncs-phase-banner {
+            margin-top: 10px;
+    
+            .ncs-phase-tag {
+                color: $primary-color;
+                background-color: white;
+            }
+            .ncs-phase-banner__text {
+                color: white;
+
+                a {
+                    color: inherit;
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    
+        #ncs-breadcrumbs {
+            cursor: default;
+
+            li {
+                color: white;
+            }
+        }
+
+        .sub-header__title {
+            color: white;
+            margin-bottom: 20px;
+        }
+    }
+}

@@ -1,0 +1,62 @@
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="progress-bar">
+      <app-progress [percent]=answerCoverage></app-progress>
+    </div>
+    <div class="question-panel" *ngIf="!finishedQuestionaire">
+      <div class="questions" *ngIf="question">
+        <div class="govuk-grid-row question-response" [class.selected]="responseSelected">
+          <div class="govuk-grid-column-one-half question">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ question.text }}
+              </h1>
+            </legend>
+          </div>
+          <div class="govuk-grid-column-one-half response">
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item" *ngFor="let rating of ratings">
+                <input class="govuk-radios__input gov-radio" [id]="rating.value" name="response" type="radio" [value]="rating.value"
+                       (click)="onSelectedResponse(rating)" [checked]="hasChecked" />
+                <label class="govuk-label govuk-radios__label gov-label" [for]="rating.value">
+                  {{rating.text}}
+                </label>
+              </div>
+            </div>
+            <!--<div class="undo-panel" *ngIf="responseSelected">
+              <div class="selected-confirm">
+                <fa-icon [icon]="faCheckCircle" size="3x"></fa-icon>
+                <span class="govuk-heading-xl">Selected</span>
+              </div>
+              <div class="undo-btn" (click)="onUndo()" draggable="false">
+                <img src="../../../../assets/images/undo.svg" />
+                <span class="govuk-label govuk-!-font-weight-bold govuk-!-font-size-27">undo</span>
+              </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <button [id]="0" (click)="getNextQuestionAndSubmit(0)" class="btn govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8 float-left">
+            This doesn't apply to me
+          </button>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <button id="next" (click)="getNextQuestionAndSubmit(ratingScore)" [disabled]="!responseSelected"
+                  class="btn govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8 float-right">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="results" *ngIf="finishedQuestionaire">
+      <h1 class="govuk-heading-xl">That's it, you've finished</h1>
+      <a [routerLink]="['/results']" role="button" draggable="false" class="btn govuk-button govuk-button--start govuk-!-margin-bottom-4">
+        View Results
+      </a>
+    </div>
+  </main>
+</div>

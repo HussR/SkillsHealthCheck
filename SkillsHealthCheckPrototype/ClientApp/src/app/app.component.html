@@ -1,10 +1,11 @@
-<div class='container-fluid'>
-  <div class='row'>
-    <div class='col-sm-3'>
-      <app-nav-menu></app-nav-menu>
-    </div>
-    <div class='col-sm-9 body-content'>
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+<app-header></app-header>
+
+<div class="govuk-width-container container">
+    <main class="govuk-main-wrapper app-main-class govuk-width-container" id="main-content" role="main">
+        <router-outlet></router-outlet>
+    </main>
 </div>
+
+<footer class="govuk-footer " role="contentinfo">
+    <app-footer></app-footer>
+</footer>

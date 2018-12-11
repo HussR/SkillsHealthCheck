@@ -1,0 +1,14 @@
+@import "node_modules/govuk-frontend/settings/all";
+@import "node_modules/govuk-frontend/helpers/all";
+
+.sidebar {
+    h3 {
+        margin-top: govuk-spacing(4)
+    }
+    .widget {
+        border-top: 7px solid $govuk-text-colour
+    }
+    .govuk-link {
+        display: block;
+    }
+}

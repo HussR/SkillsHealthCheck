@@ -1,0 +1,29 @@
+@import '../base/colors';
+@import "node_modules/govuk-frontend/helpers/all";
+
+.btn, .btn[disabled], .btn[disabled]:hover {
+    background-color: $primary-color;
+
+    &:hover {
+        background-color: govuk-colour('black');
+    }
+}
+
+.btn[disabled] {
+    background: govuk-colour('black');
+}
+
+.undo-btn {
+    background-color: govuk-colour('grey-3');
+    margin: 0 auto;
+    height: 40px;
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+        margin-top: 10px;
+    }
+}

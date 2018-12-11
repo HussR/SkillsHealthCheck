@@ -4,6 +4,7 @@ export interface Questions {
   questiontraits: QuestionTraits;
   isvisible: number;
   order: number;
+  isflipquestion: boolean;
 }
 
 export interface QuestionTraits {
@@ -15,6 +16,7 @@ export interface Customer {
   id: string;
   name: string;
   questionanswers: QuestionAnswer[];
+  isflippedsurvey: boolean;
 }
 
 export interface QuestionAnswer {

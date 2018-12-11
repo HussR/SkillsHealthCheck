@@ -1,0 +1,17 @@
+
+@import "node_modules/govuk-frontend/helpers/all";
+
+.selected-confirm {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+
+    * {
+        color: govuk-colour("green");
+    }
+
+    span {
+        margin: 0 0 0 20px;
+        cursor: default;
+    }
+}
