@@ -12,9 +12,11 @@ import { FetchQuestionsComponent } from './fetch-questions/fetch-questions.compo
 import { AssessmentComponent } from './assessment/assessment.component';
 import { AssessmentNegComponent } from './assessment-neg/assessment-neg.component';
 import { OutcomeComponent } from './outcome/outcome.component';
+import { OutcomeHistoryComponent } from './outcome/outcome-history.component';
 import { CustomersComponent } from './customers/customers.component';
 import { ResultsComponent } from './results/results.component';
 import { ResultsAllComponent } from './results/results-all.component';
+import { EnterRefComponent } from './enter-ref/enter-ref.component';
 import { ChartsModule } from 'ng2-charts';
 //import { LayoutModule } from './shared/layout/layout.module';
 import { SharedModule } from './shared/shared.module';
@@ -30,9 +32,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AssessmentComponent,
     AssessmentNegComponent,
     OutcomeComponent,
+    OutcomeHistoryComponent,
     CustomersComponent,
     ResultsComponent,
-    ResultsAllComponent
+    ResultsAllComponent,
+    EnterRefComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,9 +52,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       { path: 'assessment', component: AssessmentComponent },
       { path: 'assessment-neg', component: AssessmentNegComponent },
       { path: 'outcome', component: OutcomeComponent },
+      { path: 'outcome-history', component: OutcomeHistoryComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'results', component: ResultsComponent },
       { path: 'results-all', component: ResultsAllComponent },
+      { path: 'enter-ref', component: EnterRefComponent }
     ])
   ],
   providers: [],

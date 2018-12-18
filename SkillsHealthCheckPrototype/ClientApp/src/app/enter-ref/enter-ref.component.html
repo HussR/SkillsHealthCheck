@@ -1,0 +1,20 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="categories" *ngIf="!displayPreamble">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="title">
+          <div class="govuk-heading-m ">Retrieve your results</div>
+        </div>
+
+        <p class="govuk-body  govuk-!-margin-top-1 govuk-!-margin-bottom-2">Please enter your customer reference below to retrieve your results:</p>
+
+        <input type="text" id="custRef" name="custRef" class="input govuk-input" [(ngModel)]="customerRef" value="" />
+        <button (click)="onEnterRef()" class="btn govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">Submit</button>
+      </div>
+      </div>
+    </div>
+
+  <div class="govuk-grid-column-one-third">
+    <app-sidebar></app-sidebar>
+  </div>
+</div>

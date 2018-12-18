@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SkillsHealthCheckPrototype.Helpers;
 using SkillsHealthCheckPrototype.Models;
 using SkillsHealthCheckPrototype.Repository;
 
@@ -75,9 +76,22 @@ namespace SkillsHealthCheckPrototype.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet("[action]")]
+        public Customer GetCustomerByRef(string customerRef)
+        {
+            Customer item = DocumentDBRepository<Customer>.GetCustomersAsync(c => c.CustomerRef == customerRef).Result.FirstOrDefault();
+            return item;
+        }
+
+        [AllowAnonymous]
         [HttpPost("[action]")]
         public async Task<string> CreateCustomerAsync([FromBody]Customer customer)
         {
+            //Create a customer ref here
+            //Get top record by EndDateTime. Take the custRef then increment it by 1 using NumbersHelper
+            string randomId = RandomIdGenerator.GetUniqueBase36(6);
+            customer.CustomerRef = randomId;
+
             //Insert datetime on start of survey
             customer.StartDateTime = DateTime.Now;
             if (ModelState.IsValid)
@@ -98,6 +112,7 @@ namespace SkillsHealthCheckPrototype.Controllers
             //Currently no patching support exists
             Customer cust = GetCustomerById(customer.Id).Result;
             customer.StartDateTime = cust.StartDateTime;
+            customer.CustomerRef = cust.CustomerRef;
             //Put end time in constantly so last question should be finish time
             customer.EndDateTime = DateTime.Now;
             if (ModelState.IsValid)

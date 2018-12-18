@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Customer, Outcome, Questions, QuestionTraits, QuestionAnswer } from "../../interfaces";
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-assessment-neg',
@@ -20,10 +21,21 @@ export class AssessmentNegComponent {
   public hasChecked: boolean;
   public answerCoverage: number = 0;
   public noOfQuestions: number = 40; //Currently hard code this at 40 later go do a count of questions.
+  public orderNo: number = 1;
+  public customerRef: string;
 
   faCheckCircle = faCheckCircle;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.orderNo = params['orderNo'];
+      this.customerRef = params['customerRef'];
+      console.log('orderNo: ' + this.orderNo + ' customerRef: ' + this.customerRef + ' currentCount: ' + this.currentCount);
+      if (this.orderNo < 40) {
+        this.currentCount = this.orderNo;
+      }
+    });
+
     http.get<Questions>(baseUrl + 'api/QuestionData/GetQuestionByOrder?Order=' + this.currentCount).subscribe(result => {
       this.answer = {
         questionid: null, text: null, trait: null, traitid: null, traitscore: null
@@ -40,7 +52,15 @@ export class AssessmentNegComponent {
       };
       this.customer.questionanswers = [];
       this.question = result;
+      console.log('custREF: ' + this.customerRef);
+      if (this.customerRef !== undefined) {
+        http.get<Customer>(baseUrl + 'api/QuestionData/GetCustomerByRef?customerRef=' + this.customerRef).subscribe(result => {
+          this.customer = result;
+        }, error => console.error(error));
+      }
+
     }, error => console.error(error));
+
   }
 
   ngOnInit() {
@@ -54,7 +74,7 @@ export class AssessmentNegComponent {
 
   public getNextQuestionAndSubmit(score: number) {
     console.log('score: ' + score);
-    console.log(JSON.stringify(this.question));
+    /*console.log(JSON.stringify(this.question));*/
     this.answer = {
       questionid: null, text: null, trait: null, traitid: null, traitscore: null
     };
@@ -69,10 +89,12 @@ export class AssessmentNegComponent {
       console.log('scores flipped = ' + this.answer.traitscore);
     }
     
-    
     //this.customer.name = "Joe Bloggs";
     this.customer.questionanswers.push(this.answer);
     this.customer.isflippedsurvey = true;
+
+    console.log('Customer: ' + JSON.stringify(this.customer));
+
     //First submit before getting next question
     if (this.customer.id === null) {
         console.log('No customer found so create');

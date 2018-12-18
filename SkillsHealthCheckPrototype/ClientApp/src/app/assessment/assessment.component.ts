@@ -24,6 +24,7 @@ export class AssessmentComponent {
   faCheckCircle = faCheckCircle;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
+
     http.get<Questions>(baseUrl + 'api/QuestionData/GetQuestionByOrder?Order=' + this.currentCount).subscribe(result => {
       this.answer = {
         questionid: null, text: null, trait: null, traitid: null, traitscore: null

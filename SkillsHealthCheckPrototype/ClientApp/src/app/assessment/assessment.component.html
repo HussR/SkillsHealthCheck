@@ -14,20 +14,25 @@
             </legend>
           </div>
           <div class="govuk-grid-column-one-half response">
-
-            <div class="radioDiv">
-              <div class="radio radioItem" *ngFor="let rating of ratings">    
-                  <input class="radioInput radio radio-inline radio-gray" [id]="rating.value" name="response" type="radio" [value]="rating.value"
-                         (click)="onSelectedResponse(rating)" [checked]="hasChecked" />
-                  <label class="radioLabel" [for]="rating.value">
-            
-                  </label>
-                  <span class="bottom">
-                      {{rating.text}}
-                  </span>
-                </div>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item" *ngFor="let rating of ratings">
+                <input class="govuk-radios__input gov-radio" [id]="rating.value" name="response" type="radio" [value]="rating.value"
+                       (click)="onSelectedResponse(rating)" [checked]="hasChecked" />
+                <label class="govuk-label govuk-radios__label gov-label" [for]="rating.value">
+                  {{rating.text}}
+                </label>
               </div>
-
+            </div>
+            <!--<div class="undo-panel" *ngIf="responseSelected">
+              <div class="selected-confirm">
+                <fa-icon [icon]="faCheckCircle" size="3x"></fa-icon>
+                <span class="govuk-heading-xl">Selected</span>
+              </div>
+              <div class="undo-btn" (click)="onUndo()" draggable="false">
+                <img src="../../../../assets/images/undo.svg" />
+                <span class="govuk-label govuk-!-font-weight-bold govuk-!-font-size-27">undo</span>
+              </div>
+            </div>-->
           </div>
         </div>
       </div>

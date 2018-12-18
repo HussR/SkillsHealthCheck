@@ -13,7 +13,7 @@ namespace SkillsHealthCheckPrototype.Repository
     {
 
         private static readonly string Endpoint = "https://localhost:8081";
-        private static readonly string Key = "YOUR-DETAILS";
+        private static readonly string Key = "YOUR-KEY";
         private static readonly string DatabaseId = "SkillsHealthCheck";
         private static readonly string CollectionId = "Questions";
         private static readonly string CustomerCollectionId = "Customers";

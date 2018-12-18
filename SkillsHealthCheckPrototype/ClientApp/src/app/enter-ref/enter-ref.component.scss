@@ -1,0 +1,40 @@
+@import "node_modules/govuk-frontend/settings/all";
+@import "node_modules/govuk-frontend/helpers/all";
+
+.job {
+    h1 {
+        margin-top: govuk-spacing(4)
+    }
+    &.widget {
+        // border-top: 3px solid $govuk-border-colour
+        border-top: 3px solid govuk-colour("grey-3")
+    }
+    .title {
+        position: relative;
+        display: flex;
+        margin-top: 20px;
+    
+        // * {
+        //     color: govuk-colour("green");
+        // }
+
+        .question-duration {
+            position: absolute;
+            top:-4px;
+            right: 0;
+            margin: 2px auto;
+            span {
+                margin-left: 5px;
+            }
+        } 
+    
+        // i.far {
+        //     &.fa-clock {
+                
+        //     }
+        // }
+    }
+}
+.govuk-list {
+    padding-left: 30px;
+}

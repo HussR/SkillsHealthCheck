@@ -18,7 +18,7 @@ namespace SkillsHealthCheckPrototype.Tests
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver("C:\\Users\\husse\\source\\repos\\SkillsHealthCheckPrototype\\SkillsHealthCheckPrototype");
+            driver = new ChromeDriver("PATH-OF-CHROME-DRIVER");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             ngDriver = new NgWebDriver(driver);
         }
@@ -41,10 +41,13 @@ namespace SkillsHealthCheckPrototype.Tests
             for (int i = 0; i < 40; i++)
             {
                 int choice = random.Next(-2, 2);
+                Console.WriteLine("Before click");
+                ngDriver.WaitForAngular();
                 ngDriver.FindElement(By.Id(choice.ToString())).Click();
                 if(choice != 0)
                 {
                     ngDriver.FindElement(By.Id("next")).Click();
+                    Console.WriteLine("Next click");
                 }
             }
             Console.WriteLine("URL: " + ngDriver.Url);
